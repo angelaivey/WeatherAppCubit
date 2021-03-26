@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: BlocProvider(
-        create: (context) => WeatherBloc(FakeWeatherRepository()),
+        create: (context) => WeatherBloc(WeatherRepository()),
         child: WeatherSearchPage(),
       ),
     );

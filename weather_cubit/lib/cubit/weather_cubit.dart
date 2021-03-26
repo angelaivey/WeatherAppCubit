@@ -7,16 +7,18 @@ import 'package:meta/meta.dart';
 //part '../weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
+  //add a weather repo dependency
   final WeatherRepository _weatherRepository;
 
   WeatherCubit(this._weatherRepository) : super(WeatherInitial());
 
+  //implement get weather method
   Future<void> getWeather(String cityName) async {
     try {
       emit(WeatherLoading());
-      final weather = await _weatherRepository.fetchWeather(cityName);
+      final weather = await _weatherRepository.getWeather(cityName);
       emit(WeatherLoaded(weather));
-    } on NetworkException {
+    } on StackTrace {
       emit(WeatherError("Couldn't fetch weather. Is the device online?"));
     }
   }

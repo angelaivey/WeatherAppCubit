@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_cubit/weather_repository.dart';
 import 'models/weather.dart';
 import 'bloc/weather_bloc.dart';
 
 class WeatherSearchPage extends StatefulWidget {
+  // WeatherRepository weather = WeatherRepository();
+  // int temp;
+  // String cityName;
+
+  // Weather weather;
+  // final city;
+  //
+  // WeatherSearchPage(this.weather, this.city);
+
   @override
   _WeatherSearchPageState createState() => _WeatherSearchPageState();
 }
 
 class _WeatherSearchPageState extends State<WeatherSearchPage> {
+  //String cityName;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +74,7 @@ class _WeatherSearchPageState extends State<WeatherSearchPage> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Text(
-          weather.cityName,
+          weather.cityName.toString(),
           style: TextStyle(
             fontSize: 40,
             fontWeight: FontWeight.w700,
@@ -70,7 +82,7 @@ class _WeatherSearchPageState extends State<WeatherSearchPage> {
         ),
         Text(
           // Display the temperature with 1 decimal place
-          "${weather.temperatureCelsius.toStringAsFixed(1)} °C",
+          "${weather.temp.toStringAsFixed(1)} °C",
           style: TextStyle(fontSize: 80),
         ),
         CityInputField(),
